@@ -66,8 +66,8 @@ public class Comment extends DomainEntity {
 
     private Rendezvous rendezvous;
     private User user;
-    private Collection<Comment> replies;
-    private Comment comment;
+    private Collection<Comment> childrenComments;
+    private Comment parentComment;
 
 
 
@@ -95,23 +95,23 @@ public class Comment extends DomainEntity {
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "comment")
-    public Collection<Comment> getReplies() {
-        return replies;
+    @OneToMany(mappedBy = "parentComment")
+    public Collection<Comment> getChildrenComments() {
+        return childrenComments;
     }
 
-    public void setReplies(Collection<Comment> replies) {
-        this.replies = replies;
+    public void setChildrenComments(Collection<Comment> childrenComments) {
+        this.childrenComments = childrenComments;
     }
 
     @Valid
     @ManyToOne(optional  =true)
-    public Comment getComment() {
-        return comment;
+    public Comment getParentComment() {
+        return parentComment;
     }
 
-    public void setComment(Comment comment) {
-        this.comment = comment;
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
     }
 
 

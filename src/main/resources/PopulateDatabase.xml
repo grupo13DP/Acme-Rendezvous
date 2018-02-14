@@ -140,8 +140,8 @@
 		<property name="moment" value="2018/02/01 11:11"/>
 		<property name="rendezvous" ref="rendezvous1"/>
 		<property name="picture"><null/></property>
-		<property name="comment"><null/></property>
-		<property name="replies"><list><null/></list></property>
+		<property name="parentComment"><null/></property>
+		<property name="childrenComments"><list><null/></list></property>
 		<property name="user" ref="user2"/>
 	</bean>
 
