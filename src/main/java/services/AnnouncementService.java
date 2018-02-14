@@ -1,3 +1,4 @@
+/*
 package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,8 @@ public class AnnouncementService {
 
             final Application old = this.findOne(application.getId());
 
-		/*	if (old != null && old.getStatus() != application.getStatus()) {
+		*/
+/*	if (old != null && old.getStatus() != application.getStatus()) {
 				final Message message = this.messageService.create();
 				message.setSubject("Application status changed from " + old.getStatus() + " to " + application.getStatus());
 				message.setBody("Trip: " + application.getTrip().getTicker() + ". Applicant: " + application.getApplicant().getName());
@@ -72,7 +74,8 @@ public class AnnouncementService {
 				copyMessage.setRecipient(application.getTrip().getManager());
 				this.messageService.save(message);
 				this.messageService.save(copyMessage);
-			}*/
+			}*//*
+
         }
 
         final Application saved = this.applicationRepository.save(application);
@@ -222,3 +225,4 @@ public class AnnouncementService {
     }
 
 }
+*/
