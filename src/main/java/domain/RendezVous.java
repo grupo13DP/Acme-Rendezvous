@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +33,7 @@ public class Rendezvous extends DomainEntity{
     private Boolean deleted;
     private  Boolean forAdults;
 
+    @SafeHtml
     @NotBlank
     public String getName() {
         return name;
@@ -87,7 +89,7 @@ public class Rendezvous extends DomainEntity{
         this.finalMode = finalMode;
     }
 
-    @Valid
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -96,7 +98,7 @@ public class Rendezvous extends DomainEntity{
         this.deleted = deleted;
     }
 
-    @Valid
+
     public Boolean getForAdults() {
         return forAdults;
     }
