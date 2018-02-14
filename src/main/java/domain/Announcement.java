@@ -1,14 +1,12 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -65,19 +63,19 @@ public class Announcement extends DomainEntity {
 
     // Relationships ----------------------------------------------------------
 
-    private RendezVous rendezVous;
+    private Rendezvous rendezvous;
 
     @Valid
     @NotNull
     @ManyToOne(optional = false)
-    public RendezVous getRendezVous(){
+    public Rendezvous getRendezvous(){
 
-        return rendezVous;
+        return rendezvous;
     }
 
-    public void setRendezVous(RendezVous rendezVous) {
+    public void setRendezvous(Rendezvous rendezvous) {
 
-        this.rendezVous = rendezVous;
+        this.rendezvous = rendezvous;
     }
 
 }
