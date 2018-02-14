@@ -40,7 +40,7 @@ public class User extends Actor {
 
     private Collection<Comment> comments;
     private Collection<Join> joins;
-    private Collection<Rendezvous> rendezvouss;
+    private Collection<Rendezvous> rendezvouses;
 
     @Valid
     @OneToMany(mappedBy = "user")
@@ -64,11 +64,11 @@ public class User extends Actor {
 
     @Valid
     @OneToMany(mappedBy = "creator")
-    public Collection<Rendezvous> getRendezvouss() {
-        return rendezvouss;
+    public Collection<Rendezvous> getRendezvouses() {
+        return rendezvouses;
     }
 
-    public void setRendezvouss(Collection<Rendezvous> rendezvouss) {
-        this.rendezvouss = rendezvouss;
+    public void setRendezvouses(Collection<Rendezvous> rendezvouses) {
+        this.rendezvouses = rendezvouses;
     }
 }
