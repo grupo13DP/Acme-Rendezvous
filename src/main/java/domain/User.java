@@ -39,7 +39,7 @@ public class User extends Actor {
     // Relationships ----------------------------------------------------------
 
     private Collection<Comment> comments;
-    private Collection<Join> joins;
+    private Collection<Join> joined;
     private Collection<Rendezvous> rendezvouses;
 
     @Valid
@@ -54,12 +54,12 @@ public class User extends Actor {
 
     @Valid
     @OneToMany(mappedBy = "attendant")
-    public Collection<Join> getJoins() {
-        return joins;
+    public Collection<Join> getJoined() {
+        return joined;
     }
 
-    public void setJoins(Collection<Join> joins) {
-        this.joins = joins;
+    public void setJoined(Collection<Join> joined) {
+        this.joined = joined;
     }
 
     @Valid
