@@ -1,7 +1,6 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
@@ -36,7 +35,7 @@ public class Question extends DomainEntity {
 // Relationships ----------------------------------------------------------
 
     private Collection<Answer> answers;
-    private RendezVous rendezVous;
+    private Rendezvous rendezvous;
 
     @NotNull
     @Valid
@@ -47,15 +46,15 @@ public class Question extends DomainEntity {
 
     @Valid
     @ManyToOne(optional = false)
-    public RendezVous getRendezVous() {
-        return rendezVous;
+    public Rendezvous getRendezvous() {
+        return rendezvous;
     }
 
     public void setAnswers(Collection<Answer> answers) {
         this.answers = answers;
     }
 
-    public void setRendezVous(RendezVous rendezVous) {
-        this.rendezVous = rendezVous;
+    public void setRendezvous(Rendezvous rendezvous) {
+        this.rendezvous = rendezvous;
     }
 }

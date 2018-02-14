@@ -13,11 +13,11 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class RendezVous extends DomainEntity{
+public class Rendezvous extends DomainEntity{
 
     // Constructors -----------------------------------------------------------
 
-    public RendezVous() {
+    public Rendezvous() {
         super();
     }
 
@@ -107,11 +107,12 @@ public class RendezVous extends DomainEntity{
 
     // Relationships ----------------------------------------------------------
     private User creator;
-    private Collection<RendezVous> associated;
+    private Collection<Rendezvous> associated;
     private Collection<Announcement> announcements;
     private Collection<Join> joined;
     private Collection<Comment> comments;
     private Collection<Question> questions;
+    private Rendezvous rendezvous;
 
     @Valid
     @NotNull
@@ -125,18 +126,18 @@ public class RendezVous extends DomainEntity{
     }
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "rendezVous")
-    public Collection<RendezVous> getAssociated() {
+    @OneToMany(mappedBy = "rendezvous")
+    public Collection<Rendezvous> getAssociated() {
         return associated;
     }
 
-    public void setAssociated(Collection<RendezVous> associated) {
+    public void setAssociated(Collection<Rendezvous> associated) {
         this.associated = associated;
     }
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "rendezVous")
+    @OneToMany(mappedBy = "rendezvous")
     public Collection<Announcement> getAnnouncements() {
         return announcements;
     }
@@ -148,7 +149,7 @@ public class RendezVous extends DomainEntity{
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "rendezVous")
+    @OneToMany(mappedBy = "rendezvous")
     public Collection<Join> getJoined() {
         return joined;
     }
@@ -159,7 +160,7 @@ public class RendezVous extends DomainEntity{
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "rendezVous")
+    @OneToMany(mappedBy = "rendezvous")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -170,12 +171,22 @@ public class RendezVous extends DomainEntity{
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "rendezVous")
+    @OneToMany(mappedBy = "rendezvous")
     public Collection<Question> getQuestions() {
         return questions;
     }
 
     public void setQuestions(Collection<Question> questions) {
         this.questions = questions;
+    }
+
+    @Valid
+    @ManyToOne(optional = false)
+    public Rendezvous getRendezvous() {
+        return rendezvous;
+    }
+
+    public void setRendezvous(Rendezvous rendezvous) {
+        this.rendezvous = rendezvous;
     }
 }
