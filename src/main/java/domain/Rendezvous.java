@@ -110,7 +110,7 @@ public class Rendezvous extends DomainEntity{
     private User creator;
     private Collection<Rendezvous> associated;
     private Collection<Announcement> announcements;
-    private Collection<Join> joined;
+    private Collection<Participate> participated;
     private Collection<Comment> comments;
     private Collection<Question> questions;
     private Rendezvous rendezvous;
@@ -125,6 +125,7 @@ public class Rendezvous extends DomainEntity{
     public void setCreator(User creator) {
         this.creator = creator;
     }
+
     @Valid
     @NotNull
     @OneToMany(mappedBy = "rendezvous")
@@ -151,12 +152,12 @@ public class Rendezvous extends DomainEntity{
     @Valid
     @NotNull
     @OneToMany(mappedBy = "rendezvous")
-    public Collection<Join> getJoined() {
-        return joined;
+    public Collection<Participate> getParticipated() {
+        return participated;
     }
 
-    public void setJoined(Collection<Join> joined) {
-        this.joined = joined;
+    public void setParticipated(Collection<Participate> Participateed) {
+        this.participated = Participateed;
     }
 
     @Valid
@@ -182,7 +183,7 @@ public class Rendezvous extends DomainEntity{
     }
 
     @Valid
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     public Rendezvous getRendezvous() {
         return rendezvous;
     }

@@ -10,11 +10,11 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Join extends DomainEntity {
+public class Participate extends DomainEntity {
 
     // Constructors -----------------------------------------------------------
 
-    public Join() {
+    public Participate() {
         super();
     }
 
