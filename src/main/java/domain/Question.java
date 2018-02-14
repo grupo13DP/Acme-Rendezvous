@@ -21,6 +21,7 @@ public class Question extends DomainEntity {
 
 
     // Attributes -------------------------------------------------------------
+
     private String text;
 
     @SafeHtml
@@ -32,6 +33,7 @@ public class Question extends DomainEntity {
     public void setText(String text) {
         this.text = text;
     }
+
 // Relationships ----------------------------------------------------------
 
     private Collection<Answer> answers;

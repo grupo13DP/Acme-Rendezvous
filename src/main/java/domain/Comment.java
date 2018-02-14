@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,6 +40,7 @@ public class Comment extends DomainEntity {
         this.moment = moment;
     }
 
+    @SafeHtml
     @NotBlank
     public String getText() {
         return text;
@@ -48,6 +50,7 @@ public class Comment extends DomainEntity {
         this.text = text;
     }
 
+    @SafeHtml
     @URL
     public String getPicture() {
         return picture;
@@ -90,6 +93,8 @@ public class Comment extends DomainEntity {
         this.user = user;
     }
 
+    @Valid
+    @NotNull
     @OneToMany(mappedBy = "comment")
     public Collection<Comment> getReplies() {
         return replies;

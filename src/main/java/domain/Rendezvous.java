@@ -8,7 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.util.Collection;
 import java.util.Date;
 
@@ -43,6 +42,7 @@ public class Rendezvous extends DomainEntity{
         this.name = name;
     }
 
+    @SafeHtml
     public String getDescription() {
         return description;
     }
@@ -51,7 +51,6 @@ public class Rendezvous extends DomainEntity{
         this.description = description;
     }
     @NotNull
-    @Past
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     public Date getMoment() {
@@ -62,7 +61,7 @@ public class Rendezvous extends DomainEntity{
         this.moment = moment;
     }
 
-    @Valid
+    @SafeHtml
     @URL
     public String getPicture() {
         return picture;

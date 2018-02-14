@@ -36,13 +36,13 @@ public class Join extends DomainEntity {
 
     // Relationships ----------------------------------------------------------
 
-    private User user;
+    private User attendant;
     private Rendezvous rendezvous;
 
     @Valid
     @ManyToOne(optional = false)
-    public User getUser() {
-        return user;
+    public User getAttendant() {
+        return attendant;
     }
 
     @Valid
@@ -51,8 +51,8 @@ public class Join extends DomainEntity {
         return rendezvous;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAttendant(User attendant) {
+        this.attendant = attendant;
     }
 
     public void setRendezvous(Rendezvous rendezvous) {

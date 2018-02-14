@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Announcement extends DomainEntity {
     private String description;
     private Date moment;
 
+    @SafeHtml
     @NotBlank
     public String getTitle() {
 
@@ -37,6 +39,7 @@ public class Announcement extends DomainEntity {
         this.title = title;
     }
 
+    @SafeHtml
     public String getDescription() {
 
         return description;
