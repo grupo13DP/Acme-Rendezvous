@@ -95,5 +95,11 @@ public class AnnouncementService {
 
     }
 
+    public Collection<Announcement> announcementFindByParticipated(int userId){
+        Collection<Announcement> result;
+        result = this.announcementRepository.announcementFindByParticipated(userId);
+        return result;
+    }
+
 }
 
