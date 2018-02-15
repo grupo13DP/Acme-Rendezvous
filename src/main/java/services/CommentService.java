@@ -1,5 +1,6 @@
 package services;
 
+import domain.Admin;
 import domain.Comment;
 import domain.Rendezvous;
 import domain.User;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.CommentRepository;
+import security.Authority;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -26,6 +28,9 @@ public class CommentService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AdminService adminService;
 
     // Constructors -----------------------------------------------------------
 
@@ -59,7 +64,7 @@ public class CommentService {
     public Comment save(Comment comment){
 
         Assert.notNull(comment);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipal(comment));
         Comment res = comment;
 
         res.setMoment(new Date(System.currentTimeMillis()-1000));
@@ -77,7 +82,7 @@ public class CommentService {
     public void delete(Comment comment){
 
         Assert.notNull(comment);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipal(comment) || checkByPrincipalAdministrator());
         if(comment.getParentComment() == null){
             this.commentRepository.delete(comment);
         }else{
@@ -96,7 +101,7 @@ public class CommentService {
     public Comment findOneToEdit(int commentId){
         Assert.notNull(commentId);
         Comment comment = this.commentRepository.findOne(commentId);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipal(comment));
         return this.commentRepository.findOne(commentId);
     }
 
@@ -105,9 +110,21 @@ public class CommentService {
     }
     // Other business methods -------------------------------------------------
 
-    public void checkByPrincipal(final Comment comment) {
+    public boolean checkByPrincipal(final Comment comment) {
+        Boolean res = false;
 
         User user = this.userService.findByPrincipal();
-        Assert.isTrue(comment.getUser().equals(user));
+        if(comment.getUser().equals(user))
+            res = true;
+        return res;
+    }
+
+    public boolean checkByPrincipalAdministrator() {
+        Boolean res = false;
+        Admin admin = this.adminService.findByPrincipal();
+        if(admin.getUserAccount().getAuthorities().contains(Authority.ADMIN))
+            res = true;
+        return res;
+
     }
 }
