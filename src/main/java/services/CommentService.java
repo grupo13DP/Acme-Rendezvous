@@ -1,8 +1,6 @@
 package services;
 
-import domain.Admin;
 import domain.Comment;
-import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +62,7 @@ public class CommentService {
     public Comment save(Comment comment){
 
         Assert.notNull(comment);
-        Assert.isTrue(checkByPrincipal(comment));
+        checkByPrincipal(comment);
         Comment res = comment;
 
         res.setMoment(new Date(System.currentTimeMillis()-1000));
@@ -82,7 +80,8 @@ public class CommentService {
     public void delete(Comment comment){
 
         Assert.notNull(comment);
-        Assert.isTrue(checkByPrincipal(comment) || checkByPrincipalAdministrator());
+        checkByPrincipal(comment);
+
         if(comment.getParentComment() == null){
             this.commentRepository.delete(comment);
         }else{
@@ -101,7 +100,7 @@ public class CommentService {
     public Comment findOneToEdit(int commentId){
         Assert.notNull(commentId);
         Comment comment = this.commentRepository.findOne(commentId);
-        Assert.isTrue(checkByPrincipal(comment));
+        checkByPrincipal(comment);
         return this.commentRepository.findOne(commentId);
     }
 
@@ -110,21 +109,10 @@ public class CommentService {
     }
     // Other business methods -------------------------------------------------
 
-    public boolean checkByPrincipal(final Comment comment) {
-        Boolean res = false;
+    public void checkByPrincipal(final Comment comment) {
 
         User user = this.userService.findByPrincipal();
-        if(comment.getUser().equals(user))
-            res = true;
-        return res;
+        Assert.isTrue(comment.getUser().equals(user) || user.getUserAccount().getAuthorities().contains(Authority.ADMIN));
     }
 
-    public boolean checkByPrincipalAdministrator() {
-        Boolean res = false;
-        Admin admin = this.adminService.findByPrincipal();
-        if(admin.getUserAccount().getAuthorities().contains(Authority.ADMIN))
-            res = true;
-        return res;
-
-    }
 }
