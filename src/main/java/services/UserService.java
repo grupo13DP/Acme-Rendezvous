@@ -63,17 +63,17 @@ public class UserService {
         return result;
     }
 
-    public User save(final User User) {
+    public User save(final User user) {
 
-        Assert.notNull(User);
+        Assert.notNull(user);
 
         User result;
 
-        if (User.getId() == 0) {
-            User.getUserAccount().setPassword(new Md5PasswordEncoder().encodePassword(User.getUserAccount().getPassword(),null));
-            result = this.userRepository.save(User);
+        if (user.getId() == 0) {
+            user.getUserAccount().setPassword(new Md5PasswordEncoder().encodePassword(user.getUserAccount().getPassword(),null));
+            result = this.userRepository.save(user);
         } else
-            result = this.userRepository.save(User);
+            result = this.userRepository.save(user);
 
         return result;
     }
