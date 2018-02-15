@@ -109,7 +109,7 @@
 		<property name="associated"> <list> <null/></list> </property>
 		<property name="comments"><list> <ref bean="comment1"/> </list> </property>
 		<property name="creator" ref="user1"/>
-		<property name="rendezvous"><null/></property>
+		<property name="parentRendezvous"><null/></property>
 	</bean>
 
 	<bean id="announcement1" class="domain.Announcement">
