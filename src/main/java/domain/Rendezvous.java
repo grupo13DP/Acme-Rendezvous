@@ -156,8 +156,8 @@ public class Rendezvous extends DomainEntity{
         return participated;
     }
 
-    public void setParticipated(Collection<Participate> Participateed) {
-        this.participated = Participateed;
+    public void setParticipated(Collection<Participate> Participated) {
+        this.participated = Participated;
     }
 
     @Valid
