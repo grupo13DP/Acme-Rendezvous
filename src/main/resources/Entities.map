@@ -1,14 +1,18 @@
 #./src/main/resources/Entities.map
-#Thu Feb 15 15:54:00 CET 2018
-admin1=16
-question1=21
-announcement1=20
-comment1=24
-answer1=22
-rendezvous1=19
-userAccount3=15
-participate1=23
-userAccount2=14
-userAccount1=13
-user2=18
-user1=17
+#Thu Feb 15 17:31:40 CET 2018
+admin1=20
+comment5=32
+comment4=31
+question1=25
+comment3=30
+announcement1=24
+comment2=29
+comment1=28
+answer1=26
+rendezvous1=23
+userAccount3=19
+participate1=27
+userAccount2=18
+userAccount1=17
+user2=22
+user1=21
