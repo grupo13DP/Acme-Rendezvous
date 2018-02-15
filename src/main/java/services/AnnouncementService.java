@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import repositories.AnnouncementRepository;
 
 import java.util.Collection;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class AnnouncementService {
     // Managed Repository -----------------------------------------------------
 
     @Autowired
-    private AnnouncementService announcementRepository;
+    private AnnouncementRepository announcementRepository;
 
     @Autowired
     private UserService userService;
