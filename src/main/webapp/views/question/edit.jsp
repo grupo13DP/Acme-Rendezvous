@@ -6,8 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1"%>
+--%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -18,6 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+
 <form:form action="question/user/edit.do" modelAttribute="question">
 
     <form:hidden path="id"/>
@@ -26,9 +29,10 @@
 
     <acme:textbox path="text" code="question.text"/>
 
-    <acme:select path="rendezvous" code="question.rendezvous" items="${myRendezvouses}" itemLabel="name"/>
+    <acme:select path="rendezvous" code="question.rendezvous" items="${rendezvousCollection}" itemLabel="name"/>
 
     <acme:submit name="save" code="question.save"/>
     <acme:cancel code="question.cancel" url="${cancelUri}"/>
 
 </form:form>
+
