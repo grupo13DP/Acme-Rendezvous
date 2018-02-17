@@ -18,22 +18,22 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<display:table id="row" name="announcements" requestURI="${requestURI}"
+<display:table id="announcement" name="announcements" requestURI="${requestURI}"
                pagesize="5">
 
-    <acme:column code="announcement.title" value="${row.title}" />
-    <acme:column code="announcement.moment" value="${row.moment}" />
-    <acme:column code="announcement.description" value="${row.description}"/>
+    <acme:column code="announcement.title" value="${announcement.title}" />
+    <acme:column code="announcement.moment" value="${announcement.moment}" />
+    <acme:column code="announcement.description" value="${announcement.description}"/>
 
     <security:authorize access="hasRole('USER')">
         <display:column>
-            <a href="announcement/user/create.do"><spring:message code="announcement.create"/>
+            <acme:button code="announcement.create" url="announcement/user/create.do?announcementId=${announcement.id}" />
         </display:column>
     </security:authorize>
 
     <security:authorize access="hasRole('USER')">
         <display:column>
-            <a href="/announcement/user/edit.do"><spring:message code="announcement.edit"/>
+            <acme:button code="announcement.edit" url="announcement/user/edit.do?announcementId=${announcement.id}" />
         </display:column>
     </security:authorize>
 
