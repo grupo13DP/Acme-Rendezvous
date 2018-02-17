@@ -7,6 +7,7 @@ import org.springframework.util.Assert;
 import repositories.RendezvousRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -38,22 +39,24 @@ public class RendezvousService  {
     public Rendezvous create(){
         Rendezvous res=null;
         User creator=null;
-        Collection<Comment> comments =null;
-        Collection<Question> questions=null;
-        Collection<Announcement> announcements=null;
-        Collection<Participate> participated=null;
-        Collection<Rendezvous> associated=null;
+        Collection<Comment> comments =new ArrayList<Comment>();
+        Collection<Question> questions=new ArrayList<Question>();
+        Collection<Announcement> announcements=new ArrayList<Announcement>();
+        Collection<Participate> participated=new ArrayList<Participate>();
+        Collection<Rendezvous> associated=new ArrayList<Rendezvous>();
 
         creator= userService.findByPrincipal();
         res=new Rendezvous();
         res.setMoment(new Date(System.currentTimeMillis()-1000));
-        creator.getRendezvouses().add(res);
+
         res.setCreator(creator);
         res.setAnnouncements(announcements);
         res.setAssociated(associated);
         res.setComments(comments);
         res.setParticipated(participated);
         res.setQuestions(questions);
+        res.setFinalMode(false);
+        creator.getRendezvouses().add(res);
 
 
         return res;
@@ -64,8 +67,9 @@ public class RendezvousService  {
         Assert.isTrue(checkByPrincipal(rendezvous));
         Assert.notNull(rendezvous);
         if(rendezvous.getId()==0){
-            res.getCreator().getRendezvouses().add(rendezvous);
+
             res=rendezvousRepository.save(rendezvous);
+            //res.getCreator().getRendezvouses().add(res);
 
         }else{
             res=rendezvousRepository.save(rendezvous);

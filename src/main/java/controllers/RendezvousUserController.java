@@ -21,7 +21,7 @@ public class RendezvousUserController extends AbstractController {
     // Services --------------------------------------------
 
     @Autowired
-    private RendezvousService rendezService;
+    private RendezvousService rendezvousService;
 
     @Autowired
     private UserService userService;
@@ -55,7 +55,7 @@ public class RendezvousUserController extends AbstractController {
         ModelAndView result;
         Rendezvous rendezvous;
 
-        rendezvous = this.rendezService.create();
+        rendezvous = this.rendezvousService.create();
         result = this.createEditModelAndView(rendezvous);
 
         return result;
@@ -77,33 +77,34 @@ public class RendezvousUserController extends AbstractController {
         return result;
     }
 
-    // Edition ----------------------------------------------------------------
+*/
+   //  Edition ----------------------------------------------------------------
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@RequestParam final int noteId) {
+    public ModelAndView edit(@RequestParam  int rendezvousId) {
         final ModelAndView result;
-        Note note;
-        note = this.noteService.findOne(noteId);
-        Assert.notNull(note);
-        result = this.createEditModelAndView(note);
+        Rendezvous rendezvous;
+        rendezvous = this.rendezvousService.findOne(rendezvousId);
+        Assert.notNull(rendezvous);
+        result = this.createEditModelAndView(rendezvous);
         return result;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid final Note note, final BindingResult binding) {
+    public ModelAndView save(@Valid  Rendezvous rendezvous, final BindingResult binding) {
         ModelAndView result;
         if (binding.hasErrors())
-            result = this.createEditModelAndView(note);
+            result = this.createEditModelAndView(rendezvous);
         else
             try {
-                this.noteService.save(note);
+                this.rendezvousService.save(rendezvous);
                 result = new ModelAndView("redirect:list.do");
             } catch (final Throwable oops) {
-                result = this.createEditModelAndView(note, "note.commit.error");
+                result = this.createEditModelAndView(rendezvous, "rendezvous.commit.error");
             }
         return result;
     }
-    */
+
 
     // Ancillary methods ------------------------------------------------------
 
@@ -121,7 +122,7 @@ public class RendezvousUserController extends AbstractController {
         result = new ModelAndView("rendezvous/edit");
         result.addObject("rendezvous", rendezvous);
 
-        result.addObject( "rendezvous/user/edit.do");
+
        // result.addObject("cancelURI", "note/auditor/list.do");
         result.addObject("message", messageCode);
         return result;

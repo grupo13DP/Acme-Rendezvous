@@ -18,16 +18,19 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="creator/rendezvous/edit.do" modelAttribute="rendezvous">
+<form:form action="rendezvous/user/edit.do" modelAttribute="rendezvous">
 
     <form:hidden path="id"/>
     <form:hidden path="version"/>
     <form:hidden path="comments"/>
-    <form:hidden path="announcments"/>
+    <form:hidden path="announcements"/>
     <form:hidden path="questions"/>
     <form:hidden path="participated"/>
     <form:hidden path="creator"/>
     <form:hidden path="parentRendezvous"/>
+    <form:hidden path="associated"/>
+    <form:hidden path="location"/>
+
 
 
 
@@ -39,13 +42,15 @@
     <acme:checkbox path="finalMode" code="rendezvous.finalMode"/>
     <acme:checkbox path="forAdults" code="rendezvous.forAdults"/>
 
-<jstl:if test="${rendezvous.finalMode == false }">
+
+
+    <jstl:if test="${rendezvous.finalMode == false }">
     <acme:submit name="save" code="rendezvous.save"/>
     <jstl:if test="${rendezvous.id !=0 }">
         <acme:submit name="delete" code="rendezvous.delete"/>
     </jstl:if>
 </jstl:if>
 
-    <acme:cancel code="rendezvous.cancel" url="creator/rendezvous/list.do"/>
+    <acme:cancel code="rendezvous.cancel" url="rendezvous/user/list.do"/>
 
 </form:form>

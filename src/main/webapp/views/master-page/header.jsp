@@ -35,6 +35,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="question/user/create.do"><spring:message code="master.page.customer.action.1" /></a></li>
+					<li><a href="rendezvous/user/create.do"><spring:message code="master.page.customer.action.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

@@ -18,7 +18,7 @@ public class StringToGPSCoordinatesConverter implements Converter<String, GPSCoo
         GPSCoordinates result;
         String parts[];
 
-        if (text == null)
+        if (text.isEmpty())
             result = null;
         else
             try {

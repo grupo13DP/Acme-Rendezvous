@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 public class StringToAnnouncementConverter implements Converter<String, Announcement> {
 
     @Autowired
-    AnnouncementRepository announcementRepository;
+    private AnnouncementRepository announcementRepository;
 
     @Override
     public Announcement convert(final String text) {

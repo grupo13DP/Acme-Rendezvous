@@ -29,6 +29,8 @@
 		<bean class="converters.RendezvousToStringConverter"/>
 		<bean class="converters.UserToStringConverter"/>
 		<bean class="converters.GPSCoordinatesToStringConverter"/>
+		<bean class="converters.AnnouncementToStringConverter"/>
+		<bean class="converters.ParticipateToStringConverter"/>
 
 
 		<bean class="converters.StringToAnswerConverter"/>
@@ -37,6 +39,8 @@
 		<bean class="converters.StringToRendezvousConverter"/>
 		<bean class="converters.StringToUserConverter"/>
 		<bean class="converters.StringToGPSCoordinatesConverter"/>
+		<bean class="converters.StringToParticipateConverter"/>
+		<bean class="converters.StringToAnnouncementConverter"/>
 
 	</util:list>
 	

@@ -190,6 +190,7 @@
         <property name="announcements">
             <list>
                 <ref bean="announcement2"/>
+                <ref bean="announcement3"/>
             </list>
         </property>
         <property name="associated">
@@ -220,6 +221,13 @@
     <bean id="announcement2" class="domain.Announcement">
         <property name="title" value="Announcemet2"/>
         <property name="description" value="Second Announcement"/>
+        <property name="moment" value="2018/02/03 11:11"/>
+        <property name="rendezvous" ref="rendezvous2"/>
+    </bean>
+
+    <bean id="announcement3" class="domain.Announcement">
+        <property name="title" value="Announcemet3"/>
+        <property name="description" value="Thirth Announcement"/>
         <property name="moment" value="2018/02/03 11:11"/>
         <property name="rendezvous" ref="rendezvous2"/>
     </bean>
