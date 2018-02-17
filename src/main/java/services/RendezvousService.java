@@ -24,6 +24,9 @@ public class RendezvousService  {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AdminService adminService;
+
     // Constructors -----------------------------------------------------------
 
     public RendezvousService() {
@@ -91,7 +94,7 @@ public class RendezvousService  {
     public Rendezvous delete(final Rendezvous rendezvous) {
         Rendezvous res=null;
         Assert.notNull(rendezvous);
-        Assert.isTrue(this.checkByPrincipal(rendezvous));
+        Assert.isTrue(this.checkByPrincipal(rendezvous) || checkByPrincipalAdmin(rendezvous));
         Assert.isTrue(!rendezvous.getFinalMode());
         rendezvous.setFinalMode(true);
         return res= rendezvousRepository.save(rendezvous);
@@ -120,6 +123,14 @@ public class RendezvousService  {
             res = true;
 
         return res;
+    }
+
+    public boolean checkByPrincipalAdmin(Rendezvous rendezvous){
+        Boolean res= false;
+        Admin admin= adminService.findByPrincipal();
+        res=admin.getUserAccount().getAuthorities().equals("Admin");
+        return res;
+
     }
 
 

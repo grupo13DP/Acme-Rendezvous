@@ -32,7 +32,7 @@ public class Rendezvous extends DomainEntity{
     private Boolean deleted;
     private  Boolean forAdults;
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getName() {
         return name;
@@ -42,7 +42,7 @@ public class Rendezvous extends DomainEntity{
         this.name = name;
     }
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
         return description;
     }
@@ -61,7 +61,7 @@ public class Rendezvous extends DomainEntity{
         this.moment = moment;
     }
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @URL
     public String getPicture() {
         return picture;
