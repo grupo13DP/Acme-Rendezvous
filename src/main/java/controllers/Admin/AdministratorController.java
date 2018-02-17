@@ -8,8 +8,9 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers;
+package controllers.Admin;
 
+import controllers.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

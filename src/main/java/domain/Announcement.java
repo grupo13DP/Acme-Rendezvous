@@ -27,7 +27,7 @@ public class Announcement extends DomainEntity {
     private String description;
     private Date moment;
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getTitle() {
 
@@ -39,7 +39,7 @@ public class Announcement extends DomainEntity {
         this.title = title;
     }
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
 
         return description;
