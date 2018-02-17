@@ -13,4 +13,7 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
 
     @Query("select a from Announcement a join a.rendezvous.participated p where p.attendant.id=?1 order by a.moment desc")
     Collection<Announcement> announcementFindByParticipated(int userId);
+
+    @Query("select avg(r.announcements.size),sqrt(sum(r.announcements.size * r.announcements.size)/ count(r) - (avg(r.announcements.size) *avg(r.announcements.size))) from Rendezvous r")
+    Collection<Double> avgDevAnnouncementsPerRendezvous();
 }

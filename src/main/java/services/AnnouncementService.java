@@ -101,5 +101,10 @@ public class AnnouncementService {
         return result;
     }
 
+    public Collection<Double> avgDevAnnouncementsPerRendezvous(){
+        Collection<Double> result;
+        result = this.announcementRepository.avgDevAnnouncementsPerRendezvous();
+        return result;
+    }
 }
 
