@@ -44,7 +44,7 @@ public class QuestionService {
 
    public Question save(Question question){
         checkByPrincipal(question);
-        Assert.isTrue(question.getAnswers().isEmpty());
+        Assert.isTrue(question.getAnswers().isEmpty(),"has answers");
         return questionRepository.saveAndFlush(question);
    }
 

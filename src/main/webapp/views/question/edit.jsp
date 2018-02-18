@@ -32,6 +32,9 @@
     <acme:select path="rendezvous" code="question.rendezvous" items="${rendezvousCollection}" itemLabel="name"/>
 
     <acme:submit name="save" code="question.save"/>
+    <jstl:if test="${question.id!=0}">
+        <acme:submit name="delete" code="question.delete"/>
+    </jstl:if>
     <acme:cancel code="question.cancel" url="${cancelUri}"/>
 
 </form:form>
