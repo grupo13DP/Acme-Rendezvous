@@ -26,6 +26,9 @@ public class RendezvousService  {
     private UserService userService;
 
     @Autowired
+    private ParticipateService participateService;
+
+    @Autowired
     private AdminService adminService;
 
     // Constructors -----------------------------------------------------------
@@ -56,21 +59,26 @@ public class RendezvousService  {
         res.setParticipated(participated);
         res.setQuestions(questions);
         res.setFinalMode(false);
+        res.setDeleted(false);
         creator.getRendezvouses().add(res);
 
+        res.getParticipated().add(new Participate());
 
         return res;
     }
 
     public Rendezvous save(Rendezvous rendezvous){
-        Rendezvous res= null;
+        Rendezvous res;
         Assert.isTrue(checkByPrincipal(rendezvous));
         Assert.notNull(rendezvous);
         if(rendezvous.getId()==0){
+            Participate participate = new Participate();
+            participate.setMoment(new Date());
+            participate.setAttendant(rendezvous.getCreator());
 
             res=rendezvousRepository.save(rendezvous);
-            //res.getCreator().getRendezvouses().add(res);
-
+            participate.setRendezvous(res);
+            participateService.save(participate);
         }else{
             res=rendezvousRepository.save(rendezvous);
         }

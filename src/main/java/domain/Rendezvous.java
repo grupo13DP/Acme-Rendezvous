@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -150,7 +151,7 @@ public class Rendezvous extends DomainEntity{
 
 
     @Valid
-    @NotNull
+    @NotEmpty
     @OneToMany(mappedBy = "rendezvous")
     public Collection<Participate> getParticipated() {
         return participated;

@@ -46,6 +46,19 @@ public class RendezvousUserController extends AbstractController {
         rendezvous = user.getRendezvouses();
         result = new ModelAndView("rendezvous/list");
         result.addObject("rendezvous", rendezvous);
+        result.addObject("user",user);
+        return result;
+
+    }
+    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    public ModelAndView listAll() {
+        ModelAndView result;
+        User user;
+
+        user = userService.findByPrincipal();
+        result = new ModelAndView("rendezvous/list");
+        result.addObject("rendezvous", rendezvousService.findAll());
+        result.addObject("user",user);
         return result;
 
     }

@@ -16,13 +16,25 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table name="rendezvous" id="row" pagesize="5" class="displaytag" requestURI="rendezvous/user/list.do">
+<display:table name="rendezvous" id="row" pagesize="10" class="displaytag" requestURI="rendezvous/user/list.do">
 
 
     <acme:column code="rendezvous.name" value="${row.name}"/>
     <acme:column code="rendezvous.description" value="${row.description}"/>
     <acme:column code="rendezvous.moment" value="${row.moment}"/>
 
+    <display:column>
+        <jstl:set var="testuser" value="${user}"/>
+        <jstl:set var="contains" value="false" />
+        <jstl:forEach var="item" items="${row.participated}">
+            <jstl:if test="${item.attendant == testuser}">
+                <jstl:set var="contains" value="true"/>
+            </jstl:if>
+        </jstl:forEach>
+        <jstl:if test="${contains eq false}">
+            <acme:columnButton url="participate/user/create.do?rendezvousId=${row.id}" codeButton="rendezvous.participate"/>
+        </jstl:if>
+    </display:column>
 
 </display:table>
 
