@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Rendezvous;
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,6 +14,7 @@ import services.RendezvousService;
 import services.UserService;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/rendezvous/user")
@@ -35,19 +37,18 @@ public class RendezvousUserController extends AbstractController {
 
     // Listing -------------------------------------------------------
 
-  /*  @RequestMapping(value = "/list", method = RequestMethod.GET)
+   @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
-        final ModelAndView result;
-        final Collection<Note> notes;
+        ModelAndView result;
+        Collection<Rendezvous> rendezvous;
 
-        final Auditor auditor = this.auditorService.findByPrincipal();
-        notes = this.noteService.findByAuditor(auditor);
-        result = new ModelAndView("note/list");// es el nombre de la vista
-        result.addObject("notes", notes);
-        result.addObject("requestURI", "note/auditor/list.do");// la requestURI si no esta bien falla a la hora de paginar o ordenar
+        User user = userService.findByPrincipal();
+        rendezvous = user.getRendezvouses();
+        result = new ModelAndView("rendezvous/list");
+        result.addObject("rendezvous", rendezvous);
         return result;
 
-    }*/
+    }
     // Creation ------------------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

@@ -29,10 +29,6 @@
     <form:hidden path="creator"/>
     <form:hidden path="parentRendezvous"/>
     <form:hidden path="associated"/>
-    <form:hidden path="location"/>
-
-
-
 
 
     <acme:textbox path="name" code="rendezvous.name"/>
@@ -41,6 +37,8 @@
     <acme:textbox path="picture" code="rendezvous.picture"/>
     <acme:checkbox path="finalMode" code="rendezvous.finalMode"/>
     <acme:checkbox path="forAdults" code="rendezvous.forAdults"/>
+    <acme:textbox path="location.longitude" code="location.longitude"/>
+    <acme:textbox path="location.latitude" code="location.latitude"/>
 
 
 

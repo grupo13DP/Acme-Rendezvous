@@ -56,7 +56,7 @@ public class ParticipateService {
         Date currentDate = new Date();
         Assert.notNull(participate);
         checkByPrincipal(participate);
-        Assert.isTrue(currentDate.before(participate.getMoment()));
+        //Assert.isTrue(currentDate.before(participate.getMoment()));
         participate.setMoment(currentDate);
 
         return participateRepository.save(participate);

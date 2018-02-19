@@ -8,6 +8,7 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
+
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -34,7 +35,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="question/user/create.do"><spring:message code="master.page.customer.action.1" /></a></li>
+					<li><a href="question/user/create.do"><spring:message code="master.page.user.question.create" /></a></li>
 					<li><a href="rendezvous/user/create.do"><spring:message code="master.page.customer.action.create" /></a></li>
 				</ul>
 			</li>
